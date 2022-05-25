@@ -1,10 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     compileSdk 32
+
+    def Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
     defaultConfig {
         applicationId "com.br.matheus.correa.moviedb"
@@ -12,7 +17,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        resValue "string", "API_KEY", properties.getProperty("API_KEY")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
