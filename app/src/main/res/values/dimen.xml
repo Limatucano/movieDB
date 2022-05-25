@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_default">20dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="line_height_text">28.6dp</dimen>
 </resources>

@@ -17,4 +17,25 @@ class MovieRepository @Inject constructor(private val movieApi: MovieApi) {
             movieApi.getNowPlaying(apiKey = apiKey)
         }
     }
+
+    suspend fun getUpComing(apiKey: String) : Response<ResponseMovie>{
+
+        return withContext(Dispatchers.IO){
+            movieApi.getUpComing(apiKey = apiKey)
+        }
+    }
+
+    suspend fun getPopular(apiKey: String) : Response<ResponseMovie>{
+
+        return withContext(Dispatchers.IO){
+            movieApi.getPopular(apiKey = apiKey)
+        }
+    }
+
+    suspend fun getTopRated(apiKey: String) : Response<ResponseMovie>{
+
+        return withContext(Dispatchers.IO){
+            movieApi.getTopRated(apiKey = apiKey)
+        }
+    }
 }

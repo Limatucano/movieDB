@@ -12,4 +12,19 @@ interface MovieApi {
     suspend fun getNowPlaying(
         @Query("api_key") apiKey : String,
     ) : Response<ResponseMovie>
+
+    @GET("movie/upcoming")
+    suspend fun getUpComing(
+        @Query("api_key") apiKey: String
+    ) : Response<ResponseMovie>
+
+    @GET("movie/popular")
+    suspend fun getPopular(
+        @Query("api_key") apiKey: String
+    ) : Response<ResponseMovie>
+
+    @GET("movie/top_rated")
+    suspend fun getTopRated(
+        @Query("api_key") apiKey: String
+    ) : Response<ResponseMovie>
 }

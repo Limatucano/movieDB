@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">movieDB</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="categoria_em_exibicao">Em Exibição</string>
+    <string name="categoria_em_breve">Em Breve</string>
+    <string name="categoria_mais_popular">Mais Populares</string>
+    <string name="categoria_melhores_avaliados">Melhores Avaliados</string>
 </resources>
