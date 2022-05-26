@@ -5,16 +5,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.br.matheus.correa.moviedb.data.model.Movie
 import com.br.matheus.correa.moviedb.data.repository.MovieRepository
+import com.br.matheus.correa.moviedb.util.NetworkResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.net.HttpURLConnection
 import javax.inject.Inject
+
 
 @HiltViewModel
 class MovieViewModel @Inject constructor( private val movieRepository: MovieRepository ) : ViewModel() {
 
-    val requestCode = MutableLiveData<Int>()
+    private val INTERNAL_ERROR_MESSAGE = "Internal server error"
+
+    val requestCode = MutableLiveData<NetworkResponse>()
     val moviesNowPlaying = MutableLiveData<List<Movie>?>()
     val moviesUpComing = MutableLiveData<List<Movie>?>()
     val moviesPopular = MutableLiveData<List<Movie>?>()
@@ -24,16 +29,19 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
         try {
             viewModelScope.launch(Dispatchers.IO) {
                 val response = movieRepository.getNowPlaying(apiKey)
+                val responseBody = response.body()
 
-                requestCode.postValue(response.code())
                 if(response.isSuccessful){
-                    val responseBody = response.body()
                     moviesNowPlaying.postValue(responseBody?.results)
+                }else{
+                    readBodyError(response.errorBody()?.string())
                 }
 
             }
         }catch (exception : Exception){
-            requestCode.postValue(HttpURLConnection.HTTP_INTERNAL_ERROR)
+            requestCode.postValue(
+                NetworkResponse(INTERNAL_ERROR_MESSAGE, HttpURLConnection.HTTP_INTERNAL_ERROR)
+            )
         }
     }
 
@@ -41,16 +49,19 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
         try {
             viewModelScope.launch(Dispatchers.IO) {
                 val response = movieRepository.getUpComing(apiKey)
+                val responseBody = response.body()
 
-                requestCode.postValue(response.code())
                 if(response.isSuccessful){
-                    val responseBody = response.body()
                     moviesUpComing.postValue(responseBody?.results)
+                }else{
+                    readBodyError(response.errorBody()?.string())
                 }
 
             }
         }catch (exception : Exception){
-            requestCode.postValue(HttpURLConnection.HTTP_INTERNAL_ERROR)
+            requestCode.postValue(
+                NetworkResponse(INTERNAL_ERROR_MESSAGE, HttpURLConnection.HTTP_INTERNAL_ERROR)
+            )
         }
     }
 
@@ -58,34 +69,47 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
         try {
             viewModelScope.launch(Dispatchers.IO) {
                 val response = movieRepository.getPopular(apiKey)
+                val responseBody = response.body()
 
-                requestCode.postValue(response.code())
                 if(response.isSuccessful){
-                    val responseBody = response.body()
                     moviesPopular.postValue(responseBody?.results)
+                }else{
+                    readBodyError(response.errorBody()?.string())
                 }
 
             }
         }catch (exception : Exception){
-            requestCode.postValue(HttpURLConnection.HTTP_INTERNAL_ERROR)
+            requestCode.postValue(
+                NetworkResponse(INTERNAL_ERROR_MESSAGE, HttpURLConnection.HTTP_INTERNAL_ERROR)
+            )
         }
     }
 
-    fun getTopRated(apiKey: String){
+    fun getTopRated(apiKey: String) {
         try {
             viewModelScope.launch(Dispatchers.IO) {
                 val response = movieRepository.getTopRated(apiKey)
+                val responseBody = response.body()
 
-                requestCode.postValue(response.code())
-                if(response.isSuccessful){
-                    val responseBody = response.body()
+                if (response.isSuccessful) {
                     moviesTopRated.postValue(responseBody?.results)
+                } else {
+                    readBodyError(response.errorBody()?.string())
                 }
 
             }
-        }catch (exception : Exception){
-            requestCode.postValue(HttpURLConnection.HTTP_INTERNAL_ERROR)
+        } catch (exception: Exception) {
+            requestCode.postValue(
+                NetworkResponse(INTERNAL_ERROR_MESSAGE, HttpURLConnection.HTTP_INTERNAL_ERROR)
+            )
         }
+    }
+
+    private fun readBodyError(errorBody: String?) = errorBody?.let{
+        val objError = JSONObject(errorBody)
+        requestCode.postValue(
+            NetworkResponse(objError.getString("status_message"), objError.getInt("status_code"))
+        )
     }
 
 }

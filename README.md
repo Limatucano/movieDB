@@ -43,8 +43,8 @@ desenvolvimento;
 - [ ] Também para a tela de detalhes:
   - O Get Details retorna a duração (atributo “runtime”) em minutos, converta para o padrão “X horas(s) Y minuto(s)”;
   - Nas reviews, faça com que a review tenha no máximo 3 linhas;
-- [ ] Os possíveis erros de api devem ser tratados e exibidos ao usuário, por toast, modal, tela dedicada a erro, etc...
-- [ ] Deve utilizar alguma arquitetura, como por exemplo: MVP, MVVM, Clean Architecture ou afins;
+- [x] Os possíveis erros de api devem ser tratados e exibidos ao usuário, por toast, modal, tela dedicada a erro, etc...
+- [x] Deve utilizar alguma arquitetura, como por exemplo: MVP, MVVM, Clean Architecture ou afins;
 - [x] Se possível, use ViewBinding/DataBinding;
 - [x] Se possível, use Repository Pattern;
 - [x] Se possível, utilize programação reativa para consumo de API (Coroutines ou RxJava);
