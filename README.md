@@ -2,6 +2,18 @@
 # Desafio Mobile2You
 Utilizando a [API do The Movie DB](https://developers.themoviedb.org/3/getting-started/introduction), você deverá implementar o fluxo de exibição de alguns filmes e a tela de detalhe.
 
+## Instruções para executar
+- Baixe o repositório
+- Abra o projeto no android studio
+- Abra o arquivo local.properties
+- Adicione a sua chave com a seguinte propriedade: API_KEY=sua_chave_aqui
+
+## Resultado 
+![Screenshot_20220527_004037](https://user-images.githubusercontent.com/38586541/170624993-89639cf7-30b5-4e54-8289-c86a2b27e122.png)
+![2](https://user-images.githubusercontent.com/38586541/170625001-f14df9b9-315d-4bb3-a90c-1c64f5f0baec.png)
+![3](https://user-images.githubusercontent.com/38586541/170625168-87fc653f-02e5-410b-a6e9-6b56b460bfbc.png)
+![Screenshot_20220527_004525](https://user-images.githubusercontent.com/38586541/170625173-ca0cf18d-05c0-4a98-a6c0-dff06270d12e.png)
+
 ## Escopo
 
 O desafio consiste em fazer 3 telas de um app de catálogo de filmes:
@@ -36,11 +48,11 @@ desenvolvimento;
   - Get Top Rated;
   - Get Upcoming;
   - Get Popular.
-- [ ] Para a tela de detalhes use os endpoints:
+- [x] Para a tela de detalhes use os endpoints:
   - Get Details;
   - Get Similar Movies;
   - Get Reviews.
-- [ ] Também para a tela de detalhes:
+- [x] Também para a tela de detalhes:
   - O Get Details retorna a duração (atributo “runtime”) em minutos, converta para o padrão “X horas(s) Y minuto(s)”;
   - Nas reviews, faça com que a review tenha no máximo 3 linhas;
 - [x] Os possíveis erros de api devem ser tratados e exibidos ao usuário, por toast, modal, tela dedicada a erro, etc...
