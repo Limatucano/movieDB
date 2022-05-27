@@ -140,12 +140,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sinopse" />
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/commentsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleComments"
+            app:cardCornerRadius="@dimen/posterRadius"
+            app:cardBackgroundColor="@color/commentCardColor">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
         <TextView
             android:id="@+id/titleSimilar"
             style="@style/titleStyle"
             android:text="@string/titleSimilar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleComments" />
+            app:layout_constraintTop_toBottomOf="@+id/commentsCard" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSimilar"
@@ -153,6 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginBottom="@dimen/margin_default"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/titleSimilar"
             app:layout_constraintTop_toBottomOf="@+id/titleSimilar" />

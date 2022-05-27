@@ -14,6 +14,7 @@ import com.br.matheus.correa.moviedb.R
 import com.br.matheus.correa.moviedb.data.model.Movie
 import com.br.matheus.correa.moviedb.databinding.FragmentDetailScreenBinding
 import com.br.matheus.correa.moviedb.util.Constants
+import com.br.matheus.correa.moviedb.view.adapter.CommentAdapter
 import com.br.matheus.correa.moviedb.view.adapter.MovieAdapter
 import com.br.matheus.correa.moviedb.view.adapter.OnClickItemListener
 import com.br.matheus.correa.moviedb.viewModel.MovieViewModel
@@ -61,6 +62,7 @@ class DetailScreenFragment : Fragment(), OnClickItemListener {
         }
         movieViewModel.getDetail(movie.id.toString(),resources.getString(R.string.API_KEY))
         movieViewModel.getSimilar(movie.id.toString(),resources.getString(R.string.API_KEY))
+        movieViewModel.getReview(movie.id.toString(), resources.getString(R.string.API_KEY))
 
         movieViewModel.movieDetail.observe(viewLifecycleOwner){ detail ->
             detail?.runtime?.let {
@@ -78,6 +80,10 @@ class DetailScreenFragment : Fragment(), OnClickItemListener {
         viewBinding.rvSimilar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         movieViewModel.moviesSimilar.observe(viewLifecycleOwner){ movies ->
             viewBinding.rvSimilar.adapter = movies?.let { MovieAdapter(it, this) }
+        }
+        viewBinding.rvComment.layoutManager = LinearLayoutManager(context)
+        movieViewModel.movieReview.observe(viewLifecycleOwner){ review ->
+            viewBinding.rvComment.adapter = review?.let { CommentAdapter(it,this) }
         }
     }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.br.matheus.correa.moviedb.data.model.Movie
 import com.br.matheus.correa.moviedb.data.model.MovieDetail
+import com.br.matheus.correa.moviedb.data.model.Review
 import com.br.matheus.correa.moviedb.data.repository.MovieRepository
 import com.br.matheus.correa.moviedb.util.NetworkResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,6 +28,7 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
     val moviesTopRated = MutableLiveData<List<Movie>?>()
     val movieDetail = MutableLiveData<MovieDetail?>()
     val moviesSimilar = MutableLiveData<List<Movie>?>()
+    val movieReview = MutableLiveData<List<Review>?>()
 
     fun getNowPlaying(apiKey: String){
         try {
@@ -136,6 +138,26 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
 
                 if (response.isSuccessful) {
                     moviesSimilar.postValue(responseBody?.results)
+                } else {
+                    readBodyError(response.errorBody()?.string())
+                }
+
+            }
+        } catch (exception: Exception) {
+            requestCode.postValue(
+                NetworkResponse(INTERNAL_ERROR_MESSAGE, HttpURLConnection.HTTP_INTERNAL_ERROR)
+            )
+        }
+    }
+
+    fun getReview(movieId : String, apiKey: String){
+        try {
+            viewModelScope.launch(Dispatchers.IO) {
+                val response = movieRepository.getReviews(movieId,apiKey)
+                val responseBody = response.body()
+
+                if (response.isSuccessful) {
+                    movieReview.postValue(responseBody?.results)
                 } else {
                     readBodyError(response.errorBody()?.string())
                 }

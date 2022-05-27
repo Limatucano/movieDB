@@ -4,6 +4,7 @@ import com.br.matheus.correa.moviedb.data.api.MovieApi
 import com.br.matheus.correa.moviedb.data.model.Movie
 import com.br.matheus.correa.moviedb.data.model.MovieDetail
 import com.br.matheus.correa.moviedb.data.model.ResponseMovie
+import com.br.matheus.correa.moviedb.data.model.ResponseReview
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -53,5 +54,13 @@ class MovieRepository @Inject constructor(private val movieApi: MovieApi) {
             movieApi.getSimilar(id = movieId, apiKey = apiKey)
         }
     }
+
+    suspend fun getReviews(movieId : String, apiKey: String) : Response<ResponseReview>{
+
+        return withContext(Dispatchers.IO){
+            movieApi.getReviews(id = movieId, apiKey = apiKey)
+        }
+    }
+
 
 }

@@ -9,4 +9,5 @@
     <color name="posterBackgroundColor">#00FFFFFF</color>
     <color name="descriptionColor">#DEDDDF</color>
     <color name="voteAverageColor">#9C9B9B</color>
+    <color name="commentCardColor">#242135</color>
 </resources>
