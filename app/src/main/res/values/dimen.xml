@@ -3,4 +3,10 @@
     <dimen name="margin_default">20dp</dimen>
     <dimen name="margin_top">10dp</dimen>
     <dimen name="line_height_text">28.6dp</dimen>
+    <dimen name="headerHeight">444dp</dimen>
+    <dimen name="headerCorner">24dp</dimen>
+
+    <dimen name="posterHeight">200dp</dimen>
+    <dimen name="posterWidth">150dp</dimen>
+    <dimen name="posterRadius">12dp</dimen>
 </resources>

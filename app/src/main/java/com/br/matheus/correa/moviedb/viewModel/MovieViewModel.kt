@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.br.matheus.correa.moviedb.data.model.Movie
+import com.br.matheus.correa.moviedb.data.model.MovieDetail
 import com.br.matheus.correa.moviedb.data.repository.MovieRepository
 import com.br.matheus.correa.moviedb.util.NetworkResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +25,8 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
     val moviesUpComing = MutableLiveData<List<Movie>?>()
     val moviesPopular = MutableLiveData<List<Movie>?>()
     val moviesTopRated = MutableLiveData<List<Movie>?>()
+    val movieDetail = MutableLiveData<MovieDetail?>()
+    val moviesSimilar = MutableLiveData<List<Movie>?>()
 
     fun getNowPlaying(apiKey: String){
         try {
@@ -93,6 +96,46 @@ class MovieViewModel @Inject constructor( private val movieRepository: MovieRepo
 
                 if (response.isSuccessful) {
                     moviesTopRated.postValue(responseBody?.results)
+                } else {
+                    readBodyError(response.errorBody()?.string())
+                }
+
+            }
+        } catch (exception: Exception) {
+            requestCode.postValue(
+                NetworkResponse(INTERNAL_ERROR_MESSAGE, HttpURLConnection.HTTP_INTERNAL_ERROR)
+            )
+        }
+    }
+
+    fun getDetail(movieId : String, apiKey: String){
+        try {
+            viewModelScope.launch(Dispatchers.IO) {
+                val response = movieRepository.getDetail(movieId,apiKey)
+                val responseBody = response.body()
+
+                if (response.isSuccessful) {
+                    movieDetail.postValue(responseBody)
+                } else {
+                    readBodyError(response.errorBody()?.string())
+                }
+
+            }
+        } catch (exception: Exception) {
+            requestCode.postValue(
+                NetworkResponse(INTERNAL_ERROR_MESSAGE, HttpURLConnection.HTTP_INTERNAL_ERROR)
+            )
+        }
+    }
+
+    fun getSimilar(movieId : String, apiKey: String){
+        try {
+            viewModelScope.launch(Dispatchers.IO) {
+                val response = movieRepository.getSimilar(movieId,apiKey)
+                val responseBody = response.body()
+
+                if (response.isSuccessful) {
+                    moviesSimilar.postValue(responseBody?.results)
                 } else {
                     readBodyError(response.errorBody()?.string())
                 }

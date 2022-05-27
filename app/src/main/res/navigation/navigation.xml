@@ -18,5 +18,21 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.br.matheus.correa.moviedb.view.MainScreenFragment"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" />
+        tools:layout="@layout/fragment_main_screen" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_detailScreenFragment"
+            app:destination="@id/detailScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailScreenFragment"
+        android:name="com.br.matheus.correa.moviedb.view.DetailScreenFragment"
+        android:label="fragment_detail_screen"
+        tools:layout="@layout/fragment_detail_screen" >
+        <argument
+            android:name="movie"
+            app:argType="com.br.matheus.correa.moviedb.data.model.Movie" />
+        <action
+            android:id="@+id/action_detailScreenFragment_self"
+            app:destination="@id/detailScreenFragment" />
+    </fragment>
 </navigation>

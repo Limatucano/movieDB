@@ -2,6 +2,7 @@ package com.br.matheus.correa.moviedb.data.repository
 
 import com.br.matheus.correa.moviedb.data.api.MovieApi
 import com.br.matheus.correa.moviedb.data.model.Movie
+import com.br.matheus.correa.moviedb.data.model.MovieDetail
 import com.br.matheus.correa.moviedb.data.model.ResponseMovie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -38,4 +39,19 @@ class MovieRepository @Inject constructor(private val movieApi: MovieApi) {
             movieApi.getTopRated(apiKey = apiKey)
         }
     }
+
+    suspend fun getDetail(movieId : String, apiKey: String) : Response<MovieDetail>{
+
+        return withContext(Dispatchers.IO){
+            movieApi.getDetail(id = movieId, apiKey = apiKey)
+        }
+    }
+
+    suspend fun getSimilar(movieId : String, apiKey: String) : Response<ResponseMovie>{
+
+        return withContext(Dispatchers.IO){
+            movieApi.getSimilar(id = movieId, apiKey = apiKey)
+        }
+    }
+
 }

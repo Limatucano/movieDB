@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
@@ -22,14 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_medium"
-            android:textColor="@color/titleColor"
-            android:textSize="21sp"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginStart="@dimen/margin_default"
-            android:lineHeight="@dimen/line_height_text"
+            style="@style/titleStyle"
             android:text="@string/categoria_em_exibicao"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -40,15 +33,8 @@
             android:layout_marginTop="@dimen/margin_top" />
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans_medium"
-        android:textColor="@color/titleColor"
-        android:textSize="21sp"
-        android:layout_marginTop="@dimen/margin_default"
-        android:layout_marginStart="@dimen/margin_default"
-        android:lineHeight="@dimen/line_height_text"
-        android:text="@string/categoria_em_breve"/>
+            style="@style/titleStyle"
+            android:text="@string/categoria_em_breve"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUpComing"
@@ -58,14 +44,7 @@
             android:layout_marginTop="@dimen/margin_top" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_medium"
-            android:textColor="@color/titleColor"
-            android:textSize="21sp"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginStart="@dimen/margin_default"
-            android:lineHeight="@dimen/line_height_text"
+            style="@style/titleStyle"
             android:text="@string/categoria_mais_popular"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -76,14 +55,7 @@
             android:layout_marginTop="@dimen/margin_top" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_medium"
-            android:textColor="@color/titleColor"
-            android:textSize="21sp"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginStart="@dimen/margin_default"
-            android:lineHeight="@dimen/line_height_text"
+            style="@style/titleStyle"
             android:text="@string/categoria_melhores_avaliados"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -91,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_top" />
     </LinearLayout>
 </ScrollView>

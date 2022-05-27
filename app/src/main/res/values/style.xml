@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="titleStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">@font/open_sans_medium</item>
+        <item name="android:textColor">@color/titleColor</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:layout_marginTop">@dimen/margin_default</item>
+        <item name="android:layout_marginStart">@dimen/margin_default</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_text</item>
+    </style>
+
+    <style name="descriptionStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/descriptionColor</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_text</item>
+    </style>
+
+    <style name="voteAverageStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/voteAverageColor</item>
+        <item name="android:layout_marginStart">@dimen/margin_top</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/line_height_text</item>
+    </style>
+</resources>

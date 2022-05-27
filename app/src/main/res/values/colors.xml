@@ -6,4 +6,7 @@
     <color name="titleColor">#DEDDDF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="posterBackgroundColor">#00FFFFFF</color>
+    <color name="descriptionColor">#DEDDDF</color>
+    <color name="voteAverageColor">#9C9B9B</color>
 </resources>

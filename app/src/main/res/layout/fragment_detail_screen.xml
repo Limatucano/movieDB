@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.DetailScreenFragment"
+    android:background="@color/backgroundColor">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/headerCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/headerHeight"
+            app:cardBackgroundColor="@color/posterBackgroundColor"
+            app:cardCornerRadius="@dimen/headerCorner"
+            android:layout_marginTop="-24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/headerBackPoster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha=".37"
+                    android:outlineProvider="background"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/headerBackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="44dp"
+                    android:paddingBottom="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_right_arrow" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/headerPosterCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/posterRadius"
+                    android:layout_margin="@dimen/margin_default"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:id="@+id/headerPoster"
+                        android:layout_width="@dimen/posterWidth"
+                        android:layout_height="@dimen/posterHeight"
+                        android:adjustViewBounds="true"
+                        android:scaleType="matrix"
+                        android:src="@drawable/default_poster"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/headerTitle"
+                    android:layout_width="0dp"
+                    style="@style/titleStyle"
+                    app:layout_constraintEnd_toStartOf="@id/headerPosterCard"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/headerPosterCard"
+                    tools:text="Batman" />
+
+                <TextView
+                    android:id="@+id/headerTime"
+                    android:layout_marginTop="@dimen/margin_top"
+                    style="@style/descriptionStyle"
+                    app:layout_constraintEnd_toStartOf="@id/headerPosterCard"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@id/headerTitle"
+                    app:layout_constraintTop_toBottomOf="@id/headerTitle"
+                    tools:text="1 hora(s) e 30 minuto(s)" />
+
+                <TextView
+                    android:id="@+id/headerGenres"
+                    style="@style/descriptionStyle"
+                    app:layout_constraintEnd_toStartOf="@id/headerPosterCard"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@id/headerTitle"
+                    app:layout_constraintTop_toBottomOf="@id/headerTime"
+                    tools:text="Action • Super Hero" />
+
+                <ImageView
+                    android:id="@+id/headerStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/headerTitle"
+                    app:layout_constraintTop_toBottomOf="@id/headerGenres"
+                    app:srcCompat="@drawable/ic_star" />
+
+                <TextView
+                    android:id="@+id/headerVotes"
+                    style="@style/voteAverageStyle"
+                    app:layout_constraintBottom_toBottomOf="@id/headerStar"
+                    app:layout_constraintEnd_toStartOf="@id/headerPosterCard"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/headerStar"
+                    app:layout_constraintTop_toTopOf="@id/headerStar"
+                    tools:text="8.9 / 10 Média de Votos" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/titleSinopse"
+            style="@style/titleStyle"
+            android:text="@string/titleSinopse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerCard" />
+
+        <TextView
+            android:id="@+id/sinopse"
+            style="@style/descriptionStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/titleSinopse"
+            app:layout_constraintTop_toBottomOf="@+id/titleSinopse"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginEnd="@dimen/margin_default"
+            tools:text="The Asgardian Loki encounters the Other, the leader of an extraterrestrial race known as the Chitauri. In exchange for retrieving the Tesseract dasdasdOther, the leader of an extraterrestrial race known as the Chitauri. In exchange for retrieving the Tesseract dasdasd" />
+
+        <TextView
+            android:id="@+id/titleComments"
+            style="@style/titleStyle"
+            android:text="@string/titleComments"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sinopse" />
+
+        <TextView
+            android:id="@+id/titleSimilar"
+            style="@style/titleStyle"
+            android:text="@string/titleSimilar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleComments" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSimilar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/titleSimilar"
+            app:layout_constraintTop_toBottomOf="@+id/titleSimilar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

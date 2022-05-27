@@ -4,4 +4,9 @@
     <string name="categoria_em_breve">Em Breve</string>
     <string name="categoria_mais_popular">Mais Populares</string>
     <string name="categoria_melhores_avaliados">Melhores Avaliados</string>
+    <string name="voteAverageText">%s / 10 Média de Votos</string>
+    <string name="timeMovie">%s hora(s) e %s minuto(s)</string>
+    <string name="titleSinopse">Sinopse</string>
+    <string name="titleComments">Comentários</string>
+    <string name="titleSimilar">Similar</string>
 </resources>
